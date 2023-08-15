@@ -1,6 +1,11 @@
 package main
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+)
 
 func TestSearchInsert(t *testing.T) {
 
@@ -51,9 +56,7 @@ func TestSearchInsert(t *testing.T) {
 		result := SearchInsert(testCase.nums, testCase.target)
 		t.Logf("Calling SearchInsert(%d, %d), result: %d\n", testCase.nums, testCase.target, testCase.expected)
 
-		if result != testCase.expected {
-			t.Errorf("Incorrect result. Expect %d, got %d\n\n", testCase.expected, result)
-		}
+		assert.Equal(t, testCase.expected, result, fmt.Sprintf("Incorrect result. Expect %d, got %d\n\n", testCase.expected, result))
 	}
 
 }
